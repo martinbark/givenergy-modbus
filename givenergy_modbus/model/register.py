@@ -45,6 +45,8 @@ class Type(Enum):
 
         if self == self.TIME:
             # Convert a BCD-encoded int into datetime.time."""
+            if value >= 2400:
+                value = 0
             return time(hour=int(f'{value:04}'[:2]), minute=int(f'{value:04}'[2:]) % 60)
 
         if self == self.ASCII:
